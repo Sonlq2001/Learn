@@ -7,5 +7,7 @@ const router = express.Router();
 
 router.get("/", HomeController.home);
 router.get("/create", CreateController.create);
+router.post("/create-user", CreateController.createUser);
+router.delete("/delete-user/:userId", HomeController.deleteUser);
 
 module.exports = router;
