@@ -6,7 +6,7 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="relative overflow-x-auto max-w-[600px] mx-auto">
+    <div class="relative overflow-x-auto max-w-[1000px] mx-auto">
       <a href="/create" class="cursor-pointer inline-block">
         <button
           type="button"
@@ -24,7 +24,10 @@
           <tr>
             <th scope="col" class="px-6 py-3">STT</th>
             <th scope="col" class="px-6 py-3 whitespace-nowrap">Họ tên</th>
-            <th scope="col" class="px-6 py-3">Ngày tháng năm sinh</th>
+            <th scope="col" class="px-6 py-3 whitespace-nowrap">avatar</th>
+            <th scope="col" class="px-6 py-3 whitespace-nowrap">
+              Ngày tháng năm sinh
+            </th>
             <th scope="col" class="px-6 py-3 whitespace-nowrap">Thao tác</th>
           </tr>
         </thead>
@@ -40,6 +43,13 @@
               <%= item.id %>
             </th>
             <td class="px-6 py-4"><%= item.name %></td>
+            <td class="px-6 py-4">
+              <img
+                src="/user/<%= item.id  %>/avatar"
+                class="max-w-[200px]"
+                alt=""
+              />
+            </td>
             <td class="px-6 py-4"><%= item.birthday %></td>
             <td class="px-6 py-4">
               <div class="flex items-center gap-1.5">
@@ -65,7 +75,7 @@
                     />
                   </svg>
                 </a>
-                <button class="cursor-pointer">
+                <a href="/edit/<%= item.id %>/user" class="cursor-pointer">
                   <svg
                     class="w-6 h-6 text-gray-800 dark:text-white"
                     aria-hidden="true"
@@ -83,7 +93,7 @@
                       d="m14.304 4.844 2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565 6.844-6.844a2.015 2.015 0 0 1 2.852 0Z"
                     />
                   </svg>
-                </button>
+                </a>
                 <button
                   class="cursor-pointer btn-delete"
                   data-id="<%= item.id %>"
