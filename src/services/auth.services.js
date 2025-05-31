@@ -33,7 +33,7 @@ class AuthServices {
     }
 
     const token = jwt.sign({ id: user.id }, "123", {
-      expiresIn: "1h",
+      expiresIn: "10m",
     });
 
     return { ...user, token, password: undefined };

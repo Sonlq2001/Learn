@@ -20,7 +20,7 @@ class AuthController {
       httpOnly: true,
       secure: true,
       sameSite: "strict",
-      maxAge: 1000 * 60 * 2, // 2 phút chẳng hạn
+      maxAge: 1000 * 60 * 10, // 10 phút chẳng hạn
     });
     res.redirect("/");
   }
