@@ -7,7 +7,7 @@
   </head>
   <body>
     <div class="relative overflow-x-auto max-w-[1000px] mx-auto">
-      <a href="/create" class="cursor-pointer inline-block">
+      <a href="/user/create" class="cursor-pointer inline-block">
         <button
           type="button"
           class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
@@ -53,7 +53,7 @@
             <td class="px-6 py-4"><%= item.birthday %></td>
             <td class="px-6 py-4">
               <div class="flex items-center gap-1.5">
-                <a href="/profile/<%= item.id %>" class="cursor-pointer">
+                <a href="/user/<%= item.id %>" class="cursor-pointer">
                   <svg
                     class="w-6 h-6 text-gray-800 dark:text-white"
                     aria-hidden="true"
@@ -75,7 +75,7 @@
                     />
                   </svg>
                 </a>
-                <a href="/edit/<%= item.id %>/user" class="cursor-pointer">
+                <a href="/user/<%= item.id %>/edit" class="cursor-pointer">
                   <svg
                     class="w-6 h-6 text-gray-800 dark:text-white"
                     aria-hidden="true"
@@ -136,7 +136,7 @@
             const row = e.target.closest("tr");
 
             try {
-              await fetch(`/delete-user/${id}`, {
+              await fetch(`/user/${id}/delete`, {
                 method: "DELETE",
               });
               row.remove();

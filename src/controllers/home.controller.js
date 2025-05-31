@@ -1,15 +1,10 @@
-const HomeServices = require("../services/home.services");
+const UserServices = require("../services/user.services");
 
 class HomeController {
-  static async home(req, res) {
-    const result = await HomeServices.getListUser();
+  static async homePage(req, res) {
+    const result = await UserServices.getListUser();
 
     res.render("pages/home", { data: result });
-  }
-
-  static async deleteUser(req, res) {
-    const result = await HomeServices.deleteUser(req.params.userId);
-    res.json({ message: "Xóa thành công !" });
   }
 }
 

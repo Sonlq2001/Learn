@@ -2,14 +2,29 @@ const fs = require("fs");
 
 const { conn } = require("../configs/connect-sql");
 
-class DetailServices {
-  static async getDetailProfile(id) {
+class UserServices {
+  static async createUser({ data }) {
+    const {
+      avatar: { path },
+    } = data;
+
+    const fileData = fs.readFileSync(path);
+
+    await conn.query(
+      `INSERT INTO user (name, birthday, avatar) VALUES (?, ?, ?)`,
+      [data.name, data.birthday, fileData]
+    );
+
+    fs.unlinkSync(path);
+  }
+
+  static async userDetail(id) {
     const [rows] = await conn.query(`SELECT * FROM user WHERE id = ${id}`);
 
     return rows[0];
   }
 
-  static async getAvatarProfile(id) {
+  static async getAvatarUser(id) {
     const [rows] = await conn.query(`SELECT avatar FROM user WHERE id = ?`, [
       id,
     ]);
@@ -27,6 +42,16 @@ class DetailServices {
     }
     await conn.query(sql, data);
   }
+
+  static async deleteUser(id) {
+    await conn.query(`DELETE FROM user WHERE id = ${id}`);
+  }
+
+  static async getListUser() {
+    const [rows] = await conn.query(`SELECT * FROM user`);
+
+    return rows;
+  }
 }
 
-module.exports = DetailServices;
+module.exports = UserServices;
