@@ -20,6 +20,7 @@ app.use(express.static(path.join(rootDir, "public")));
 // set default layout
 app.use(expressLayouts);
 app.set("layout", "layouts/common");
+app.set("layout extractScripts", true);
 
 app.use("", require("./routes"));
 
